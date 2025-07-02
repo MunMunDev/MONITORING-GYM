@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 class UserModel (
     @SerializedName("id_user")
-    var idUser: String? = null,
+    var idUser: Int? = null,
 
     @SerializedName("nama")
     var nama: String? = null,
