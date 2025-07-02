@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primaryColor">#2C88C1</color>
+    <color name="backgroundTransparent">#B3000000</color>
+    <color name="textJudulTransparent">#FFFFFF</color>
+    <color name="textPenulisTransparent">#DCDCDC</color>
+
+    <color name="startGradient">#1871AA</color>
+    <color name="centerGradient">#2A91D1</color>
+    <color name="endGradient">#B3DABC</color>
+
+    <color name="colorBackgroundSearch">#66DADADA</color>
+    <color name="colorBackgroundBottom">#99F5F5F5</color>
+
+    <color name="buttonBackgroundBottom">#E66FB0F4</color>
+
+    <color name="textSnowDrift">#F8FBF8</color>
+    <color name="textColorWhite">#FAF5EF</color>
+    <color name="textColorBlack">#1A1A1A</color>
 </resources>
