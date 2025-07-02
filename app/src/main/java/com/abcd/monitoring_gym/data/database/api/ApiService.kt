@@ -14,7 +14,7 @@ interface ApiService {
         @Query("get_user") get_user: String,
         @Query("username") username: String,
         @Query("password") password: String,
-    ): ArrayList<UserModel>
+    ): UserModel
     // POST
 
     // User
