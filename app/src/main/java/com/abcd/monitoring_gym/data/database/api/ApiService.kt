@@ -20,12 +20,11 @@ interface ApiService {
     // User
     @FormUrlEncoded
     @POST("e-kelontong/api/post.php")
-    suspend fun addUser(
+    suspend fun postRegister(
         @Field("add_user") addUser:String,
         @Field("nama") nama:String,
         @Field("nomor_hp") nomorHp:String,
-        @Field("id_kecamatan") idKecamatan:String,
-        @Field("detail_alamat") detailAlamat:String,
+        @Field("alamat") alamat:String,
         @Field("username") username:String,
         @Field("password") password:String,
         @Field("sebagai") sebagai:String
