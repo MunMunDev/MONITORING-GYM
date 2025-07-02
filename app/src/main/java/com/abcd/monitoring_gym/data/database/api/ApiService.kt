@@ -9,23 +9,22 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("e-kelontong/api/get.php")
+    @GET("monitoring-gym/api/get.php")
     suspend fun getUser(
         @Query("get_user") get_user: String,
         @Query("username") username: String,
         @Query("password") password: String,
-    ): ArrayList<UserModel>
+    ): UserModel
     // POST
 
     // User
     @FormUrlEncoded
-    @POST("e-kelontong/api/post.php")
-    suspend fun addUser(
+    @POST("monitoring-gym/api/post.php")
+    suspend fun postRegister(
         @Field("add_user") addUser:String,
         @Field("nama") nama:String,
         @Field("nomor_hp") nomorHp:String,
-        @Field("id_kecamatan") idKecamatan:String,
-        @Field("detail_alamat") detailAlamat:String,
+        @Field("alamat") alamat:String,
         @Field("username") username:String,
         @Field("password") password:String,
         @Field("sebagai") sebagai:String

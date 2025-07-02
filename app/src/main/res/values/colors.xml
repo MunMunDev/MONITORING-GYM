@@ -3,6 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="text_white">#F3F3F3</color>
+    <color name="bg_white">#F5F5FA</color>
+    <color name="abuabu_muda_sekali">#CCEEEEEE</color>
+    <color name="abuabu_muda">#DDDDDD</color>
+    <color name="abuabu_tua">#767676</color>
+
     <color name="primaryColor">#2C88C1</color>
     <color name="backgroundTransparent">#B3000000</color>
     <color name="textJudulTransparent">#FFFFFF</color>

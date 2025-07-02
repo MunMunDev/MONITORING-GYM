@@ -2,7 +2,7 @@ package com.abcd.monitoring_gym.utils.hilt
 
 import com.abcd.aplikasipenjualanplafon.utils.TanggalDanWaktu
 import com.abcd.monitoring_gym.data.database.api.ApiService
-import com.abcd.monitoring_gym.ui.Constant
+import com.abcd.monitoring_gym.utils.Constant
 import com.abcd.monitoring_gym.utils.KonversiRupiah
 import com.abcd.monitoring_gym.utils.LoadingAlertDialog
 import com.abcd.monitoring_gym.utils.network.CheckNetwork
