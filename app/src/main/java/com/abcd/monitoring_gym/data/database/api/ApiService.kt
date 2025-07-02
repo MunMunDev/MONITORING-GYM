@@ -9,7 +9,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("e-kelontong/api/get.php")
+    @GET("monitoring-gym/api/get.php")
     suspend fun getUser(
         @Query("get_user") get_user: String,
         @Query("username") username: String,
@@ -19,7 +19,7 @@ interface ApiService {
 
     // User
     @FormUrlEncoded
-    @POST("e-kelontong/api/post.php")
+    @POST("monitoring-gym/api/post.php")
     suspend fun postRegister(
         @Field("add_user") addUser:String,
         @Field("nama") nama:String,
