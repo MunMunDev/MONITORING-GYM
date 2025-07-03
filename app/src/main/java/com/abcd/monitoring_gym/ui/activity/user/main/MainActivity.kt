@@ -14,6 +14,7 @@ import com.abcd.monitoring_gym.ui.fragment.user.home.HomeFragment
 import com.abcd.monitoring_gym.utils.SharedPreferencesLogin
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
