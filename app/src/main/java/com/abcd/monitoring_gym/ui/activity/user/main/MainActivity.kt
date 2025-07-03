@@ -6,21 +6,20 @@ import android.os.Handler
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.abcd.monitoring_gym.R
 import com.abcd.monitoring_gym.databinding.ActivityMainBinding
 import com.abcd.monitoring_gym.ui.fragment.user.home.HomeFragment
 import com.abcd.monitoring_gym.utils.SharedPreferencesLogin
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPreferences: SharedPreferencesLogin
     private lateinit var scaleAnimation: ScaleAnimation
-    private var checkFragmentPosition = 0   // 0 Home, 1 product, 2 history, 3 account
+    private var checkFragmentPosition = 0   // 0 Home, 1 pelatihan, 2 agenda, 3 account
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
