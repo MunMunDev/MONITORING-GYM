@@ -31,7 +31,7 @@ class PesananAdapter(
         holder.apply {
             binding.apply {
                 tvPelatihan.text = progress.tPelatihan
-                setAdapterPesanan(progress.progress!!, rvProgress)
+                setAdapterPesanan(progress.tPelatihan!!, progress.jenis_pelatihan!!, progress.progress!!, rvProgress)
 
                 clHeader.setOnClickListener {
                     if(llBody.visibility == View.GONE){
@@ -53,17 +53,24 @@ class PesananAdapter(
 
     override fun getItemCount() = listPesanan.size
 
-    private fun setAdapterPesanan(data:ArrayList<ProgressModel>, rvProgress: RecyclerView){
-        val adapterProgress = ProgressAdapter(data, object: OnClickItem.ClickProgress{
-            override fun clickProgress(progress: ProgressModel) {
+    private fun setAdapterPesanan(pelatihan:String, jenisPelatihan:String, data:ArrayList<ProgressModel>, rvProgress: RecyclerView){
+        val adapterProgress = ProgressAdapter(data, pelatihan, jenisPelatihan)
 
-            }
-
-        } )
         rvProgress.apply {
             adapter = adapterProgress
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
+
+//        val adapterProgress = ProgressAdapter(data, object: OnClickItem.ClickProgress{
+//            override fun clickProgress(progress: ProgressModel) {
+//
+//            }
+//
+//        } )
+//        rvProgress.apply {
+//            adapter = adapterProgress
+//            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//        }
 
     }
 
