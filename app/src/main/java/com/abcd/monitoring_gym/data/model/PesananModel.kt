@@ -4,15 +4,19 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
+@Suppress("UNREACHABLE_CODE")
 class PesananModel (
     @SerializedName("id_pesanan")
     var id_pesanan: Int? = null,
 
+    @SerializedName("id_user")
+    var id_user: String? = null,
+
     @SerializedName("id_pelatihan")
     var id_pelatihan: String? = null,
 
-    @SerializedName("pelatihan")
-    var pelatihan: String? = null,
+    @SerializedName("tPelatihan")
+    var tPelatihan: String? = null,
 
     @SerializedName("jenis_pelatihan")
     var jenis_pelatihan: String? = null,
@@ -26,8 +30,14 @@ class PesananModel (
     @SerializedName("waktu")
     var waktu: String? = null,
 
-    @SerializedName("pelatihan_model")
-    var pelatihan_model: PelatihanModel? = null,
+    @SerializedName("user")
+    var user: UserModel? = null,
+
+    @SerializedName("pelatihan")
+    var pelatihan: PelatihanModel? = null,
+
+    @SerializedName("progress")
+    var progress: ArrayList<ProgressModel>? = arrayListOf(),
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -38,19 +48,23 @@ class PesananModel (
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readParcelable(PelatihanModel::class.java.classLoader)
+        parcel.readString(),
+        TODO("user"),
+        parcel.readParcelable(PelatihanModel::class.java.classLoader),
+        TODO("progress")
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id_pesanan)
+        parcel.writeString(id_user)
         parcel.writeString(id_pelatihan)
-        parcel.writeString(pelatihan)
+        parcel.writeString(tPelatihan)
         parcel.writeString(jenis_pelatihan)
         parcel.writeString(selesai)
         parcel.writeString(tanggal)
         parcel.writeString(waktu)
-        parcel.writeParcelable(pelatihan_model, flags)
+        parcel.writeParcelable(pelatihan, flags)
     }
 
     override fun describeContents(): Int {

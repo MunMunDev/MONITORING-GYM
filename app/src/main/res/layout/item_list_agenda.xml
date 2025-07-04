@@ -52,7 +52,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="8dp"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProgress"
             android:layout_width="match_parent"

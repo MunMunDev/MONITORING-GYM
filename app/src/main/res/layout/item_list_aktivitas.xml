@@ -30,7 +30,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="2dp">
         <TextView
             android:id="@+id/tvIntruksi"
             android:layout_width="0dp"
@@ -38,12 +38,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:lineSpacingExtra="1dp"
-            android:text="Akan berisi sebanyak 2 lines sehingga dapat dilihat isi apa saja yang ada di dalamnya.\n afdjaklfjaklf"
+            android:lineSpacingExtra="2dp"
+            android:text="Akan berisi sebanyak 2 lines sehingga dapat dilihat isi apa saja yang ada di dalamnya.\n afdjaklfjaklf\n afdjaklfjaklf"
             android:textSize="12sp"
             android:textStyle="normal"
             android:textColor="@color/black"
-            android:maxLines="3"
+            android:maxLines="4"
             android:ellipsize="end"/>
 
         <TextView
@@ -57,7 +57,6 @@
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="@color/abuabu_tua"
-            android:lineSpacingExtra="2dp"
             android:maxLines="2"
             android:ellipsize="end"/>
 
