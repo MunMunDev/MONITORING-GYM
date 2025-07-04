@@ -2,6 +2,7 @@ package com.abcd.monitoring_gym.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.abcd.monitoring_gym.R
 import com.abcd.monitoring_gym.data.model.ProgressModel
@@ -27,6 +28,16 @@ class ProgressAdapter(
         holder.apply {
             binding.apply {
                 tvIntruksi.text = progress.intruksi
+                tvPelatih.text = progress.pelatih?.nama
+                var selesai = ""
+                if(progress.sudah_tercapai==0) {
+                    tvSelesai.setTextColor(ContextCompat.getColor(itemView.context, R.color.danger))
+                    selesai = "Belum"
+                } else{
+                    tvSelesai.setTextColor(ContextCompat.getColor(itemView.context, R.color.success))
+                    selesai = "Sudah"
+                }
+                tvSelesai.text = selesai
 
                 val videoId = searchIdUrlVideo(progress.link_youtube!!)
                 val imgUrl = "https://img.youtube.com/vi/$videoId/0.jpg"

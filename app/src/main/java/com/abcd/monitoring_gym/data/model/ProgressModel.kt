@@ -20,6 +20,9 @@ class ProgressModel (
     @SerializedName("link_youtube")
     var link_youtube: String? = null,
 
+    @SerializedName("sudah_tercapai")
+    var sudah_tercapai: Int? = null,
+
     @SerializedName("pelatihan")
     var pelatihan: PelatihanModel? = null,
 
