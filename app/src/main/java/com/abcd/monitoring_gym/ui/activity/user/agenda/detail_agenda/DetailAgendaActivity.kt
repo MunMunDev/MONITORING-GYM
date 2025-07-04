@@ -73,10 +73,10 @@ class DetailAgendaActivity : AppCompatActivity() {
 
     private fun setSuccessUpdateProgress(data: ResponseModel) {
         loading.alertDialogCancel()
-        if(data.response=="0"){
+        if(data.status=="0"){
             Toast.makeText(this@DetailAgendaActivity, "Berhasil", Toast.LENGTH_SHORT).show()
             progress.sudah_tercapai = 1
-            loadDetailAktivitas(progress, pelatihan, jenisPelatihan)
+            binding.btnTandai.visibility = View.GONE
         } else{
             Toast.makeText(this@DetailAgendaActivity, data.message_response, Toast.LENGTH_SHORT).show()
         }
