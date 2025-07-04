@@ -23,6 +23,8 @@ interface ApiService {
         @Query("get_pesanan") get_pesanan: String,
         @Query("id_user") id_user: Int,
     ): ArrayList<PesananModel>
+
+
     // POST
 
     // User
@@ -36,6 +38,14 @@ interface ApiService {
         @Field("username") username:String,
         @Field("password") password:String,
         @Field("sebagai") sebagai:String
+    ): ResponseModel
+
+    // User
+    @FormUrlEncoded
+    @POST("monitoring-gym/api/post.php")
+    suspend fun postUpdateCheckAgenda(
+        @Field("update_check_progress") update_check_progress:String,
+        @Field("id_progress") id_progress:Int,
     ): ResponseModel
 
 }
