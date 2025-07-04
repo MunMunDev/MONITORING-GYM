@@ -5,11 +5,11 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 class ProgressModel (
-    @SerializedName("id_intruksi")
-    var id_intruksi: Int? = null,
+    @SerializedName("id_progress")
+    var id_progress: Int? = null,
 
-    @SerializedName("id_pelatihan")
-    var id_pelatihan: String? = null,
+    @SerializedName("id_pesanan")
+    var id_pesanan: String? = null,
 
     @SerializedName("id_pelatih")
     var id_pelatih: String? = null,
@@ -36,18 +36,21 @@ class ProgressModel (
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readParcelable(PelatihanModel::class.java.classLoader),
-        TODO("pelatih")
+        parcel.readParcelable(UserModel::class.java.classLoader)
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeValue(id_intruksi)
-        parcel.writeString(id_pelatihan)
+        parcel.writeValue(id_progress)
+        parcel.writeString(id_pesanan)
         parcel.writeString(id_pelatih)
         parcel.writeString(intruksi)
         parcel.writeString(link_youtube)
+        parcel.writeValue(sudah_tercapai)
         parcel.writeParcelable(pelatihan, flags)
+        parcel.writeParcelable(pelatih, flags)
     }
 
     override fun describeContents(): Int {

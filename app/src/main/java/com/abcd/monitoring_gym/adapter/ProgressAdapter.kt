@@ -1,5 +1,6 @@
 package com.abcd.monitoring_gym.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -7,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abcd.monitoring_gym.R
 import com.abcd.monitoring_gym.data.model.ProgressModel
 import com.abcd.monitoring_gym.databinding.ItemListAktivitasBinding
+import com.abcd.monitoring_gym.ui.activity.user.agenda.detail_agenda.DetailAgendaActivity
 import com.abcd.monitoring_gym.utils.OnClickItem
 import com.bumptech.glide.Glide
 
 class ProgressAdapter(
     private val listProgress: ArrayList<ProgressModel>,
-    private val onClickItem: OnClickItem.ClickProgress
+    private val pelatihan: String,
+    private val jenisPelatihan: String
+//    private val onClickItem: OnClickItem.ClickProgress
 ) : RecyclerView.Adapter<ProgressAdapter.ProgressViewHolder>() {
 
     inner class ProgressViewHolder(val binding: ItemListAktivitasBinding) : RecyclerView.ViewHolder(binding.root)
@@ -51,7 +55,13 @@ class ProgressAdapter(
             }
 
             itemView.setOnClickListener {
-                onClickItem.clickProgress(progress)
+                val i = Intent(itemView.context, DetailAgendaActivity::class.java)
+                i.putExtra("progress", progress)
+                i.putExtra("pelatihan", pelatihan)
+                i.putExtra("jenis_pelatihan", jenisPelatihan)
+
+                itemView.context.startActivity(i)
+//                onClickItem.clickProgress(progress)
             }
 
         }
