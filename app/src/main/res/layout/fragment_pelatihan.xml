@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.user.pelatihan.PelatihanFragment"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/myAppBar"
+        layout="@layout/appbar_top_bar"/>
+    <TextView
+        android:text="Pelatihan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvJenisPelatihan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:nestedScrollingEnabled="true"
+        android:visibility="gone"
+        tools:listitem="@layout/item_list_pelatihan"
+        tools:itemCount="3"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/smJenisPelatihan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <include layout="@layout/sm_item_list_jenis_pelatihan"/>
+                <include layout="@layout/sm_item_list_jenis_pelatihan"/>
+                <include layout="@layout/sm_item_list_jenis_pelatihan"/>
+                <include layout="@layout/sm_item_list_jenis_pelatihan"/>
+                <include layout="@layout/sm_item_list_jenis_pelatihan"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPelatihan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:paddingBottom="8dp"
+        tools:listitem="@layout/item_list_aktivitas"
+        tools:itemCount="5"
+        android:visibility="gone"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/smPelatihan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/sm_item_list_pelatihan"/>
+            <include layout="@layout/sm_item_list_pelatihan"/>
+            <include layout="@layout/sm_item_list_pelatihan"/>
+            <include layout="@layout/sm_item_list_pelatihan"/>
+            <include layout="@layout/sm_item_list_pelatihan"/>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</LinearLayout>
