@@ -1,0 +1,92 @@
+package com.abcd.monitoring_gym.adapter
+
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.abcd.monitoring_gym.R
+import com.abcd.monitoring_gym.data.model.PelatihanModel
+import com.abcd.monitoring_gym.databinding.ItemListPelatihanBinding
+import com.abcd.monitoring_gym.ui.activity.user.agenda.detail_agenda.DetailAgendaActivity
+import com.abcd.monitoring_gym.utils.KonversiRupiah
+import com.abcd.monitoring_gym.utils.OnClickItem
+import com.bumptech.glide.Glide
+
+class PelatihanAdapter(
+    private val listPelatihan: ArrayList<PelatihanModel>,
+) : RecyclerView.Adapter<PelatihanAdapter.PelatihanViewHolder>() {
+    private val rupiah = KonversiRupiah()
+
+    private var tempPelatihan = listPelatihan
+    private var tempPelatihan2 = tempPelatihan
+
+    @SuppressLint("NotifyDataSetChanged", "DefaultLocale")
+    fun searchData(kata: String){
+        val vKata = kata.lowercase().trim()
+        val data = listPelatihan.filter {
+            (
+                it.pelatihan!!.lowercase().trim().contains(vKata)
+                or
+                it.deskripsi!!.lowercase().trim().contains(vKata)
+                or
+                it.jenis_pelatihan?.jenis_pelatihan.toString().contains(vKata)
+            )
+        }
+        tempPelatihan = data as ArrayList<PelatihanModel>
+        tempPelatihan2 = tempPelatihan
+        notifyDataSetChanged()
+    }
+
+    fun searchJenisPelatihan(kata: String){
+        val vKata = kata.lowercase().trim()
+        val data = tempPelatihan.filter {
+            (
+                it.jenis_pelatihan?.jenis_pelatihan!!.lowercase().trim().contains(vKata)
+            )
+        }
+        tempPelatihan2 = data as ArrayList<PelatihanModel>
+        notifyDataSetChanged()
+    }
+
+    inner class PelatihanViewHolder(val binding: ItemListPelatihanBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PelatihanViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemListPelatihanBinding.inflate(inflater, parent, false)
+        return PelatihanViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: PelatihanViewHolder, position: Int) {
+        val pelatihan = tempPelatihan2[position]
+        holder.apply {
+            binding.apply {
+                tvPelatihan.text = pelatihan.pelatihan
+                tvJenisPelatihan.text = pelatihan.jenis_pelatihan?.jenis_pelatihan
+                tvDeskripsi.text = pelatihan.deskripsi
+                tvHarga.text = rupiah.rupiah(pelatihan.harga!!.trim().toLong())
+                tvHariKhusus.text = pelatihan.hari_khusus
+
+                Glide
+                    .with(holder.itemView)
+                    .load(pelatihan.gambar)
+                    .placeholder(R.drawable.loading)
+                    .error(R.drawable.img_main)
+                    .into(ivGambar)
+            }
+
+            itemView.setOnClickListener {
+                val i = Intent(itemView.context, DetailAgendaActivity::class.java)
+                i.putExtra("pelatihan", pelatihan)
+
+                itemView.context.startActivity(i)
+            }
+
+        }
+
+    }
+
+    override fun getItemCount() = tempPelatihan2.size
+
+}
