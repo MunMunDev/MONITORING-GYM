@@ -1,5 +1,7 @@
 package com.abcd.monitoring_gym.data.database.api
 
+import com.abcd.monitoring_gym.data.model.JenisPelatihanModel
+import com.abcd.monitoring_gym.data.model.PelatihanModel
 import com.abcd.monitoring_gym.data.model.PesananModel
 import com.abcd.monitoring_gym.data.model.ProgressModel
 import com.abcd.monitoring_gym.data.model.ResponseModel
@@ -23,6 +25,16 @@ interface ApiService {
         @Query("get_pesanan") get_pesanan: String,
         @Query("id_user") id_user: Int,
     ): ArrayList<PesananModel>
+
+    @GET("monitoring-gym/api/get.php")
+    suspend fun getPelatihan(
+        @Query("get_pelatihan") get_pelatihan: String,
+    ): ArrayList<PelatihanModel>
+
+    @GET("monitoring-gym/api/get.php")
+    suspend fun getJenisPelatihan(
+        @Query("get_jenis_pelatihan") get_jenis_pelatihan: String,
+    ): ArrayList<JenisPelatihanModel>
 
 
     // POST
