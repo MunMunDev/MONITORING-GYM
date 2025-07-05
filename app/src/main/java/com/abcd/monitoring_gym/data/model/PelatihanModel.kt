@@ -23,12 +23,16 @@ class PelatihanModel (
     @SerializedName("harga")
     var harga: String? = null,
 
+    @SerializedName("gambar")
+    var gambar: String? = null,
+
     @SerializedName("jenis_pelatiihan")
     var jenis_pelatiihan: JenisPelatihanModel? = null,
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -45,6 +49,7 @@ class PelatihanModel (
         parcel.writeString(deskripsi)
         parcel.writeString(hari_khusus)
         parcel.writeString(harga)
+        parcel.writeString(gambar)
         parcel.writeParcelable(jenis_pelatiihan, flags)
     }
 
