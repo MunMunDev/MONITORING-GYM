@@ -19,7 +19,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/img_main"
+            android:src="@color/abuabu_muda"
             android:scaleType="centerCrop"
             android:elevation="1dp"/>
 
@@ -45,7 +45,8 @@
                 android:text="Judul"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
                 android:maxLines="1"
                 android:ellipsize="end"/>
 
@@ -56,9 +57,10 @@
                 app:layout_constraintTop_toBottomOf="@id/tvPelatihan"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="4dp"
-                android:text="Jenis Pelatihan"
+                android:text="Jenis Pelatihan "
                 android:textSize="12sp"
-                android:textColor="@color/abuabu_tua"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
                 android:lineSpacingExtra="2dp"
                 android:maxLines="1"
                 android:ellipsize="end"/>
@@ -69,10 +71,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tvJenisPelatihan"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="4dp"
-                android:text="Deskripsi"
+                android:layout_marginTop="6dp"
+                android:text="Deskripsi           "
                 android:textSize="12sp"
-                android:textColor="@color/abuabu_tua"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
                 android:lineSpacingExtra="2dp"
                 android:maxLines="1"
                 android:ellipsize="end"/>
@@ -85,9 +88,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
-                android:text="Rp. 1.000.000"
+                android:text="Rp. 1.000.000   "
                 android:textSize="12sp"
-                android:textColor="@color/abuabu_tua"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end"/>
@@ -100,9 +104,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
-                android:text="Jumat"
+                android:text="Jumat        "
                 android:textSize="12sp"
-                android:textColor="@color/abuabu_tua"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end"/>
