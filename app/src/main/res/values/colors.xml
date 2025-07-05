@@ -27,8 +27,8 @@
 
     <color name="colorBackgroundSearch">#66DADADA</color>
     <color name="colorBackgroundBottom">#99F5F5F5</color>
-
     <color name="buttonBackgroundBottom">#E66FB0F4</color>
+    <color name="colorBackgroundTransparent">#00FFFFFF</color>
 
     <color name="textSnowDrift">#F8FBF8</color>
     <color name="textColorWhite">#FAF5EF</color>
