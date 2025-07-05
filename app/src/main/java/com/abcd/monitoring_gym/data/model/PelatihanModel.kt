@@ -26,8 +26,8 @@ class PelatihanModel (
     @SerializedName("gambar")
     var gambar: String? = null,
 
-    @SerializedName("jenis_pelatiihan")
-    var jenis_pelatiihan: JenisPelatihanModel? = null,
+    @SerializedName("jenis_pelatihan")
+    var jenis_pelatihan: JenisPelatihanModel? = null,
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -50,7 +50,7 @@ class PelatihanModel (
         parcel.writeString(hari_khusus)
         parcel.writeString(harga)
         parcel.writeString(gambar)
-        parcel.writeParcelable(jenis_pelatiihan, flags)
+        parcel.writeParcelable(jenis_pelatihan, flags)
     }
 
     override fun describeContents(): Int {
