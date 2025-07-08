@@ -4,16 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.abcd.monitoring_gym.R
 import com.abcd.monitoring_gym.data.model.PelatihanModel
 import com.abcd.monitoring_gym.databinding.ItemListPelatihanBinding
-import com.abcd.monitoring_gym.ui.activity.user.agenda.detail_agenda.DetailAgendaActivity
+import com.abcd.monitoring_gym.ui.activity.user.pelatihan.detail.DetailPelatihanActivity
 import com.abcd.monitoring_gym.utils.KonversiRupiah
-import com.abcd.monitoring_gym.utils.OnClickItem
 import com.bumptech.glide.Glide
 
+@SuppressLint("NotifyDataSetChanged")
 class PelatihanAdapter(
     private val listPelatihan: ArrayList<PelatihanModel>,
 ) : RecyclerView.Adapter<PelatihanAdapter.PelatihanViewHolder>() {
@@ -77,7 +76,7 @@ class PelatihanAdapter(
             }
 
             itemView.setOnClickListener {
-                val i = Intent(itemView.context, DetailAgendaActivity::class.java)
+                val i = Intent(itemView.context, DetailPelatihanActivity::class.java)
                 i.putExtra("pelatihan", pelatihan)
 
                 itemView.context.startActivity(i)
