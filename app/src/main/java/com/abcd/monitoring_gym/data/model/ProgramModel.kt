@@ -25,7 +25,7 @@ class ProgramModel (
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),
         parcel.readString(),
-        TODO("pelatih"),
+        parcel.readParcelable(UserModel::class.java.classLoader),
         parcel.readParcelable(PelatihanModel::class.java.classLoader)
     ) {
     }
@@ -34,6 +34,7 @@ class ProgramModel (
         parcel.writeValue(id_program)
         parcel.writeString(id_pelatih)
         parcel.writeString(id_pelatihan)
+        parcel.writeParcelable(pelatih, flags)
         parcel.writeParcelable(pelatihan, flags)
     }
 
