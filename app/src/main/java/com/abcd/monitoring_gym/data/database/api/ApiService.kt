@@ -3,6 +3,7 @@ package com.abcd.monitoring_gym.data.database.api
 import com.abcd.monitoring_gym.data.model.JenisPelatihanModel
 import com.abcd.monitoring_gym.data.model.PelatihanModel
 import com.abcd.monitoring_gym.data.model.PesananModel
+import com.abcd.monitoring_gym.data.model.ProgramModel
 import com.abcd.monitoring_gym.data.model.ProgressModel
 import com.abcd.monitoring_gym.data.model.ResponseModel
 import com.abcd.monitoring_gym.data.model.UserModel
@@ -36,6 +37,12 @@ interface ApiService {
         @Query("get_jenis_pelatihan") get_jenis_pelatihan: String,
     ): ArrayList<JenisPelatihanModel>
 
+    @GET("monitoring-gym/api/get.php")
+    suspend fun getPelatih(
+        @Query("get_pelatih") get_pelatih: String,
+        @Query("id_pelatihan") id_pelatihan: Int,
+    ): ArrayList<ProgramModel>
+
 
     // POST
 
@@ -52,12 +59,24 @@ interface ApiService {
         @Field("sebagai") sebagai:String
     ): ResponseModel
 
-    // User
+    //
     @FormUrlEncoded
     @POST("monitoring-gym/api/post.php")
     suspend fun postUpdateCheckAgenda(
         @Field("update_check_progress") update_check_progress:String,
         @Field("id_progress") id_progress:Int,
+    ): ResponseModel
+
+    // Daftar Pelatihan
+    @FormUrlEncoded
+    @POST("monitoring-gym/api/post.php")
+    suspend fun postDaftarPelatihan(
+        @Field("post_daftar_pelatihan") post_daftar_pelatihan:String,
+        @Field("id_user") id_user:Int,
+        @Field("id_pelatih") id_pelatih:Int,
+        @Field("id_pelatihan") id_pelatihan:Int,
+        @Field("pelatihan") pelatihan:String,
+        @Field("jenis_pelatihan") jenis_pelatihan:String,
     ): ResponseModel
 
 }
