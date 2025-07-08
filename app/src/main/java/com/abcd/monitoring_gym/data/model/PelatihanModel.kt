@@ -23,12 +23,16 @@ class PelatihanModel (
     @SerializedName("harga")
     var harga: String? = null,
 
-    @SerializedName("jenis_pelatiihan")
-    var jenis_pelatiihan: JenisPelatihanModel? = null,
+    @SerializedName("gambar")
+    var gambar: String? = null,
+
+    @SerializedName("jenis_pelatihan")
+    var jenis_pelatihan: JenisPelatihanModel? = null,
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -45,7 +49,8 @@ class PelatihanModel (
         parcel.writeString(deskripsi)
         parcel.writeString(hari_khusus)
         parcel.writeString(harga)
-        parcel.writeParcelable(jenis_pelatiihan, flags)
+        parcel.writeString(gambar)
+        parcel.writeParcelable(jenis_pelatihan, flags)
     }
 
     override fun describeContents(): Int {

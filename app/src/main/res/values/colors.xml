@@ -12,7 +12,7 @@
 
     <color name="text_white">#F3F3F3</color>
     <color name="bg_white">#F5F5FA</color>
-    <color name="abuabu_muda_sekali">#CCEEEEEE</color>
+    <color name="abuabu_muda_sekali">#F0F0F0</color>
     <color name="abuabu_muda">#DDDDDD</color>
     <color name="abuabu_tua">#767676</color>
 
@@ -27,8 +27,8 @@
 
     <color name="colorBackgroundSearch">#66DADADA</color>
     <color name="colorBackgroundBottom">#99F5F5F5</color>
-
     <color name="buttonBackgroundBottom">#E66FB0F4</color>
+    <color name="colorBackgroundTransparent">#00FFFFFF</color>
 
     <color name="textSnowDrift">#F8FBF8</color>
     <color name="textColorWhite">#FAF5EF</color>

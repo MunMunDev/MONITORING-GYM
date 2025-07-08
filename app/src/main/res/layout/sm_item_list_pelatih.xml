@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llPelatih"
+    android:layout_width="140dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginEnd="6dp"
+    android:background="@drawable/bg_card"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@color/abuabu_muda"/>
+
+    <TextView
+        android:id="@+id/tvPelatih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:lineSpacingExtra="1dp"
+        android:text="Nama Pelatih sini"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/abuabu_muda"
+        android:maxLines="2"
+        android:textAlignment="center"
+        android:ellipsize="end"
+        android:background="@color/abuabu_muda"/>
+
+    <TextView
+        android:id="@+id/tvJenisKelamin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:lineSpacingExtra="1dp"
+        android:text="Laki-Laki"
+        android:textSize="14sp"
+        android:textColor="@color/abuabu_muda"
+        android:textAlignment="center"
+        android:background="@color/abuabu_muda"/>
+
+</LinearLayout>
