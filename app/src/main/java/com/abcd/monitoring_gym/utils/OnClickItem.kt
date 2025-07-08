@@ -2,6 +2,7 @@ package com.abcd.monitoring_gym.utils
 
 import com.abcd.monitoring_gym.data.model.JenisPelatihanModel
 import com.abcd.monitoring_gym.data.model.PelatihanModel
+import com.abcd.monitoring_gym.data.model.ProgramModel
 import com.abcd.monitoring_gym.data.model.ProgressModel
 
 interface OnClickItem {
@@ -20,6 +21,12 @@ interface OnClickItem {
     interface ClickPelatihan{
         fun clickPelatihan(
             pelatihan: PelatihanModel
+        )
+    }
+
+    interface ClickProgram{
+        fun clickProgram(
+            program: ProgramModel
         )
     }
 
