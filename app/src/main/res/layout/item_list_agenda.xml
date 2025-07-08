@@ -35,7 +35,7 @@
             android:id="@+id/arrowHeader"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/baseline_arrow_drop_down_24"
+            android:background="@drawable/baseline_arrow_drop_up_24"
             app:layout_constraintBottom_toBottomOf="@+id/tvPelatihan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvPelatihan" />
@@ -52,7 +52,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="8dp"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProgress"
             android:layout_width="match_parent"

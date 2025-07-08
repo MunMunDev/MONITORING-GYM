@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.abcd.monitoring_gym.adapter.PesananAdapter
 import com.abcd.monitoring_gym.data.model.PesananModel
 import com.abcd.monitoring_gym.databinding.FragmentHomeBinding
+import com.abcd.monitoring_gym.ui.activity.user.main.MainActivity
 import com.abcd.monitoring_gym.utils.SharedPreferencesLogin
 import com.abcd.monitoring_gym.utils.network.UIState
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,13 +47,13 @@ class HomeFragment : Fragment() {
     private fun setButton() {
         binding.apply {
             btnPelatihan.setOnClickListener {
-
+                MainActivity().clickPelatihan()
             }
             btnAgenda.setOnClickListener {
-
+                MainActivity().clickAgenda()
             }
             btnAkun.setOnClickListener {
-
+                MainActivity().clickAccount()
             }
         }
     }
