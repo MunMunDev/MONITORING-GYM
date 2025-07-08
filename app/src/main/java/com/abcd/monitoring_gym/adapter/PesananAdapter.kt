@@ -60,18 +60,6 @@ class PesananAdapter(
             adapter = adapterProgress
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
-
-//        val adapterProgress = ProgressAdapter(data, object: OnClickItem.ClickProgress{
-//            override fun clickProgress(progress: ProgressModel) {
-//
-//            }
-//
-//        } )
-//        rvProgress.apply {
-//            adapter = adapterProgress
-//            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-//        }
-
     }
 
     private fun searchIdUrlVideo(urlVideo: String): String {
