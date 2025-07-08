@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.abcd.monitoring_gym.R
 import com.abcd.monitoring_gym.databinding.ActivityMainBinding
+import com.abcd.monitoring_gym.ui.fragment.user.agenda.AgendaFragment
 import com.abcd.monitoring_gym.ui.fragment.user.home.HomeFragment
 import com.abcd.monitoring_gym.ui.fragment.user.pelatihan.PelatihanFragment
 import com.abcd.monitoring_gym.utils.SharedPreferencesLogin
@@ -108,7 +109,7 @@ class MainActivity : AppCompatActivity() {
             ivAgenda.setImageResource(R.drawable.ic_agenda_active)
             ivAccount.setImageResource(R.drawable.ic_akun)
 
-//            setFragment(AgendaFragment())
+            setFragment(AgendaFragment())
             checkFragmentPosition = 2
         }
     }
