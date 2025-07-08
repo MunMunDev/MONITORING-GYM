@@ -1,6 +1,5 @@
 package com.abcd.monitoring_gym.ui.activity.user.pelatihan.detail
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,9 +10,11 @@ import com.abcd.monitoring_gym.R
 import com.abcd.monitoring_gym.adapter.ProgramAdapter
 import com.abcd.monitoring_gym.data.model.PelatihanModel
 import com.abcd.monitoring_gym.data.model.ProgramModel
+import com.abcd.monitoring_gym.data.model.ResponseModel
 import com.abcd.monitoring_gym.databinding.ActivityDetailPelatihanBinding
 import com.abcd.monitoring_gym.utils.Constant
 import com.abcd.monitoring_gym.utils.KonversiRupiah
+import com.abcd.monitoring_gym.utils.LoadingAlertDialog
 import com.abcd.monitoring_gym.utils.OnClickItem
 import com.abcd.monitoring_gym.utils.SharedPreferencesLogin
 import com.abcd.monitoring_gym.utils.network.UIState
@@ -30,7 +31,13 @@ class DetailPelatihanActivity : AppCompatActivity() {
     private var rupiah = KonversiRupiah()
     private var dataPelatihan : PelatihanModel? = null
     private lateinit var adapterPelatih: ProgramAdapter
-    private var idPelatihTerpilih = "0"
+    private var idPelatihTerpilih = 0
+    private var idPelatihan = 0
+    private var pelatihan = ""
+    private var jenisPelatihan = ""
+
+    private var loading = LoadingAlertDialog()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailPelatihanBinding.inflate(layoutInflater)
@@ -41,12 +48,16 @@ class DetailPelatihanActivity : AppCompatActivity() {
         setButton()
         setTopAppBar()
         getPelatih()
+        getDaftarPelatihan()
     }
 
     private fun fetchDataPreviously() {
         val extras: Bundle? = intent.extras
         if(extras != null){
             dataPelatihan = extras.getParcelable("pelatihan")!!
+            idPelatihan = dataPelatihan?.id_pelatihan!!
+            pelatihan = dataPelatihan?.pelatihan!!
+            jenisPelatihan = dataPelatihan?.jenis_pelatihan?.jenis_pelatihan!!
 
             fetchPelatih(dataPelatihan?.id_pelatihan!!)
             setData(dataPelatihan!!)
@@ -82,7 +93,7 @@ class DetailPelatihanActivity : AppCompatActivity() {
     private fun setAdapterPelatih(data: ArrayList<ProgramModel>) {
         adapterPelatih = ProgramAdapter(data, object: OnClickItem.ClickProgram{
             override fun clickProgram(program: ProgramModel) {
-                idPelatihTerpilih = program.id_pelatih!!
+                idPelatihTerpilih = program.id_pelatih?.trim()!!.toInt()
             }
         })
         binding.rvPelatih.apply {
@@ -109,7 +120,10 @@ class DetailPelatihanActivity : AppCompatActivity() {
                 finish()
             }
             btnDaftar.setOnClickListener {
-
+                postDaftarPelatihan(
+                    sharedPreferences.getIdUser(), idPelatihTerpilih,
+                    idPelatihan, pelatihan, jenisPelatihan
+                )
             }
         }
     }
@@ -117,8 +131,8 @@ class DetailPelatihanActivity : AppCompatActivity() {
     private fun setData(data: PelatihanModel){
         binding.apply {
             val hariKhusus = if(data.hari_khusus != null ) data.hari_khusus else "-"
-            tvJenisPelatihan.text = data.jenis_pelatihan?.jenis_pelatihan
             tvNamaPelatihan.text = data.pelatihan
+            tvJenisPelatihan.text = data.jenis_pelatihan?.jenis_pelatihan
             tvBiaya.text = rupiah.rupiah(data.harga!!.toLong())
             tvHariKhusus.text = hariKhusus
             tvDeskripsi.text = data.deskripsi
@@ -131,35 +145,38 @@ class DetailPelatihanActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun showDialogDaftarPelatihan(){
-//        val view = AlertDialogDaftarBinding.inflate(layoutInflater)
-//        val alertDialog = AlertDialog.Builder(this@DetailPelatihanActivity)
-//        alertDialog.apply {
-//            setView(view.root)
-//            setCancelable(false)
-//        }
-//        val dialogInputan = alertDialog.create()
-//        dialogInputan.show()
-//
-//        view.apply {
-//            // set information
-//            tvTitleKonfirmasi.text = namaPelatihan
-//            tvBodyKonfirmasi.text = """
-//                Apakah anda ingin daftar $namaPelatihan ?
-//                Pelatihan ini Gratis.
-//                Klik konfirmasi untuk mendaftar
-//            """.trimIndent()
-//
-//            // Button
-//            btnKonfirmasi.setOnClickListener {
-//                postDaftarGratis()
-//                dialogInputan.dismiss()
-//            }
-//            btnBatal.setOnClickListener {
-//                dialogInputan.dismiss()
-//            }
-//        }
+    private fun postDaftarPelatihan(
+        idUser: Int, idPelatih: Int, idPelatihan: Int,
+        pelatihan:String, jenisPelatihan: String
+    ){
+        viewModel.postDaftarPelatihan(
+            idUser, idPelatih, idPelatihan, pelatihan, jenisPelatihan
+        )
+    }
+
+    private fun getDaftarPelatihan(){
+        viewModel.getDaftarPelatihan().observe(this@DetailPelatihanActivity){result->
+            when(result){
+                is UIState.Loading-> loading.alertDialogLoading(this@DetailPelatihanActivity)
+                is UIState.Failure-> setFailureDaftarPelatih(result.message)
+                is UIState.Success-> setSuccessDaftarPelatih(result.data)
+            }
+        }
+    }
+
+    private fun setFailureDaftarPelatih(message: String) {
+        loading.alertDialogCancel()
+        Toast.makeText(this@DetailPelatihanActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setSuccessDaftarPelatih(data: ResponseModel) {
+        loading.alertDialogCancel()
+        if(data.status == "0"){
+            Toast.makeText(this@DetailPelatihanActivity, "Berhasil Pesan Pelatihan", Toast.LENGTH_SHORT).show()
+            finish()
+        } else{
+            Toast.makeText(this@DetailPelatihanActivity, data.message_response, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setStartShimmerPelatih(){
