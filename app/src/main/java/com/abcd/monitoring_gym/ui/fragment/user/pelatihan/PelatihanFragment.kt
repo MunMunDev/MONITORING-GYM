@@ -47,10 +47,14 @@ class PelatihanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setTopAppBar()
         getJenisPelatihan()
         getPelatihan()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchPelatihan()
     }
 
     private fun setTopAppBar() {

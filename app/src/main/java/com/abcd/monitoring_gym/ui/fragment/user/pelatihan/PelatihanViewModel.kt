@@ -36,7 +36,7 @@ class PelatihanViewModel @Inject constructor(
         }
     }
 
-    private fun fetchPelatihan(){
+    fun fetchPelatihan(){
         viewModelScope.launch {
             try {
                 _pelatihan.postValue(UIState.Loading)
