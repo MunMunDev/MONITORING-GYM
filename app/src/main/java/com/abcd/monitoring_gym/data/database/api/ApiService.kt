@@ -28,6 +28,12 @@ interface ApiService {
     ): ArrayList<PesananModel>
 
     @GET("monitoring-gym/api/get.php")
+    suspend fun getRiwayatPesanan(
+        @Query("get_riwayat_pesanan") get_riwayat_pesanan: String,
+        @Query("id_user") id_user: Int,
+    ): ArrayList<PesananModel>
+
+    @GET("monitoring-gym/api/get.php")
     suspend fun getPelatihan(
         @Query("get_pelatihan") get_pelatihan: String,
     ): ArrayList<PelatihanModel>
@@ -77,6 +83,21 @@ interface ApiService {
         @Field("id_pelatihan") id_pelatihan:Int,
         @Field("pelatihan") pelatihan:String,
         @Field("jenis_pelatihan") jenis_pelatihan:String,
+    ): ResponseModel
+
+    //
+    @FormUrlEncoded
+    @POST("monitoring-gym/api/post.php")
+    suspend fun postUpdateAkun(
+        @Field("update_akun") update_akun:String,
+        @Field("id_user") id_user:Int,
+        @Field("nama") nama:String,
+        @Field("nomor_hp") nomor_hp:String,
+        @Field("alamat") alamat:String,
+        @Field("jenis_kelamin") jenis_kelamin:String,
+        @Field("username") username:String,
+        @Field("password") password:String,
+        @Field("username_lama") username_lama:String,
     ): ResponseModel
 
 }

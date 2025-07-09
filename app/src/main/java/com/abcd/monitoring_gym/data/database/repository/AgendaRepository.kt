@@ -17,6 +17,12 @@ class AgendaRepository @Inject constructor(
         return api.getPesanan("", idUser)
     }
 
+    suspend fun getRiwayatPesanan(
+        idUser: Int
+    ):ArrayList<PesananModel>{
+        return api.getRiwayatPesanan("", idUser)
+    }
+
     suspend fun postUpdateProgress(
         idProgress: Int
     ): ResponseModel {
