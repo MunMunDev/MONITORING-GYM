@@ -28,6 +28,12 @@ interface ApiService {
     ): ArrayList<PesananModel>
 
     @GET("monitoring-gym/api/get.php")
+    suspend fun getRiwayatPesanan(
+        @Query("get_riwayat_pesanan") get_riwayat_pesanan: String,
+        @Query("id_user") id_user: Int,
+    ): ArrayList<PesananModel>
+
+    @GET("monitoring-gym/api/get.php")
     suspend fun getPelatihan(
         @Query("get_pelatihan") get_pelatihan: String,
     ): ArrayList<PelatihanModel>

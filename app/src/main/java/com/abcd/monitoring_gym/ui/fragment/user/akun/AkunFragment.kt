@@ -10,7 +10,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abcd.monitoring_gym.R
+import com.abcd.monitoring_gym.adapter.PesananAdapter
+import com.abcd.monitoring_gym.data.model.PesananModel
 import com.abcd.monitoring_gym.data.model.ResponseModel
 import com.abcd.monitoring_gym.data.model.UserModel
 import com.abcd.monitoring_gym.databinding.AlertDialogAkunBinding
@@ -20,6 +23,7 @@ import com.abcd.monitoring_gym.utils.LoadingAlertDialog
 import com.abcd.monitoring_gym.utils.SharedPreferencesLogin
 import com.abcd.monitoring_gym.utils.network.UIState
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.ArrayList
 
 @AndroidEntryPoint
 class AkunFragment : Fragment() {
@@ -54,15 +58,27 @@ class AkunFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setNavDrawer()
-        setButton()
         setDataUser()
+        setButton()
         getUpdateData()
+        getRiwayatPelatihan()
     }
 
     private fun setNavDrawer() {
         binding.myAppBar.apply {
             ivNavDrawer.visibility = View.GONE
             tvTitle.visibility = View.GONE
+        }
+    }
+
+    private fun setDataUser() {
+        binding.apply {
+            tvNama.text = userModel.nama
+            tvNomorHp.text = userModel.nomor_hp
+            tvAlamat.text = userModel.alamat
+            tvJenisKelamin.text = userModel.jenis_kelamin
+            tvUsername.text = userModel.username
+            tvPassword.text = userModel.password
         }
     }
 
@@ -233,17 +249,42 @@ class AkunFragment : Fragment() {
             btnRiwayat.setBackgroundResource(R.drawable.bg_card_active)
             btnRiwayat.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
             llRiwayat.visibility = View.VISIBLE
+
+            fetchRiwayatPelatihan(sharedPreferences.getIdUser())
         }
     }
 
-    private fun setDataUser() {
-        binding.apply {
-            tvNama.text = userModel.nama
-            tvNomorHp.text = userModel.nomor_hp
-            tvAlamat.text = userModel.alamat
-            tvJenisKelamin.text = userModel.jenis_kelamin
-            tvUsername.text = userModel.username
-            tvPassword.text = userModel.password
+    private fun fetchRiwayatPelatihan(idUser: Int) {
+        viewModel.fetchRiwayatPelatihan(idUser)
+    }
+
+    private fun getRiwayatPelatihan(){
+        viewModel.getRiwayat.observe(viewLifecycleOwner){result->
+            when(result){
+                is UIState.Loading -> {}
+                is UIState.Failure -> setFailureRiwayatPelatihan(result.message)
+                is UIState.Success -> setSuccessRiwayatPelatihan(result.data)
+            }
+        }
+    }
+
+    private fun setFailureRiwayatPelatihan(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setSuccessRiwayatPelatihan(data: ArrayList<PesananModel>) {
+        if(data.isNotEmpty()){
+            setAdapterPelatihan(data)
+        } else{
+            Toast.makeText(requireContext(), "Tidak ada data", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setAdapterPelatihan(data: ArrayList<PesananModel>) {
+        val adapterPesanan = PesananAdapter(data)
+        binding.rvRiwayat.apply {
+            adapter = adapterPesanan
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
     }
 }
