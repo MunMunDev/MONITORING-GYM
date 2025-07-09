@@ -21,9 +21,10 @@ class AkunRepository @Inject constructor(
         jenisKelamin: String,
         username: String,
         password: String,
+        usernameLama: String,
     ):ResponseModel{
         return api.postUpdateAkun(
-            "", idUser, nama, nomorHp, alamat, jenisKelamin, username, password
+            "", idUser, nama, nomorHp, alamat, jenisKelamin, username, password, usernameLama
         )
     }
 

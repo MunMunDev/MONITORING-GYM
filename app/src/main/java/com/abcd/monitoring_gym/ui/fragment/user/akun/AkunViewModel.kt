@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.abcd.monitoring_gym.data.database.repository.AkunRepository
 import com.abcd.monitoring_gym.data.model.ResponseModel
 import com.abcd.monitoring_gym.utils.network.UIState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class AkunViewModel @Inject constructor(
     private val repositoryAkun: AkunRepository
 ) : ViewModel() {
@@ -25,13 +27,14 @@ class AkunViewModel @Inject constructor(
         jenisKelamin: String,
         username: String,
         password: String,
+        usernameLama: String,
     ){
         viewModelScope.launch {
             try {
                 _updateProgress.postValue(UIState.Loading)
                 delay(5_00)
                 val data = repositoryAkun.postDaftarPelatihan(
-                    idUser, nama, nomorHp, alamat, jenisKelamin, username, password
+                    idUser, nama, nomorHp, alamat, jenisKelamin, username, password, usernameLama
                 )
                 _updateProgress.postValue(UIState.Success(data))
             } catch (ex: Exception){

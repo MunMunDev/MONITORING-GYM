@@ -91,6 +91,7 @@ interface ApiService {
         @Field("jenis_kelamin") jenis_kelamin:String,
         @Field("username") username:String,
         @Field("password") password:String,
+        @Field("username_lama") username_lama:String,
     ): ResponseModel
 
 }
