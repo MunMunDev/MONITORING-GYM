@@ -79,4 +79,18 @@ interface ApiService {
         @Field("jenis_pelatihan") jenis_pelatihan:String,
     ): ResponseModel
 
+    //
+    @FormUrlEncoded
+    @POST("monitoring-gym/api/post.php")
+    suspend fun postUpdateAkun(
+        @Field("update_akun") update_akun:String,
+        @Field("id_user") id_user:Int,
+        @Field("nama") nama:String,
+        @Field("nomor_hp") nomor_hp:String,
+        @Field("alamat") alamat:String,
+        @Field("jenis_kelamin") jenis_kelamin:String,
+        @Field("username") username:String,
+        @Field("password") password:String,
+    ): ResponseModel
+
 }
