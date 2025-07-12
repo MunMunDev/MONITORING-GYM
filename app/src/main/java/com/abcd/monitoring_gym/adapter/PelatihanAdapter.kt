@@ -61,11 +61,16 @@ class PelatihanAdapter(
         val pelatihan = tempPelatihan2[position]
         holder.apply {
             binding.apply {
+                var hariKhusus = "Setiap ${pelatihan.hari_khusus}";
+                if(pelatihan.hari_khusus == null || pelatihan.hari_khusus!!.isEmpty()){
+                    hariKhusus = "-"
+                }
+
                 tvPelatihan.text = pelatihan.pelatihan
                 tvJenisPelatihan.text = pelatihan.jenis_pelatihan?.jenis_pelatihan
                 tvDeskripsi.text = pelatihan.deskripsi
                 tvHarga.text = rupiah.rupiah(pelatihan.harga!!.trim().toLong())
-                tvHariKhusus.text = pelatihan.hari_khusus
+                tvHariKhusus.text = hariKhusus
 
                 Glide
                     .with(holder.itemView)
