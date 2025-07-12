@@ -18,6 +18,12 @@ class PesananModel (
     @SerializedName("tPelatihan")
     var tPelatihan: String? = null,
 
+    @SerializedName("deskripsi")
+    var deskripsi: String? = null,
+
+    @SerializedName("hari_khusus")
+    var hari_khusus: String? = null,
+
     @SerializedName("jenis_pelatihan")
     var jenis_pelatihan: String? = null,
 
@@ -49,7 +55,9 @@ class PesananModel (
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        TODO("user"),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readParcelable(UserModel::class.java.classLoader),
         parcel.readParcelable(PelatihanModel::class.java.classLoader),
         TODO("progress")
     ) {
@@ -60,10 +68,13 @@ class PesananModel (
         parcel.writeString(id_user)
         parcel.writeString(id_pelatihan)
         parcel.writeString(tPelatihan)
+        parcel.writeString(deskripsi)
+        parcel.writeString(hari_khusus)
         parcel.writeString(jenis_pelatihan)
         parcel.writeString(selesai)
         parcel.writeString(tanggal)
         parcel.writeString(waktu)
+        parcel.writeParcelable(user, flags)
         parcel.writeParcelable(pelatihan, flags)
     }
 
