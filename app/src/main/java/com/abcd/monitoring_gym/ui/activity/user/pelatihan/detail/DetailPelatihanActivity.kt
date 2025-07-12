@@ -34,6 +34,8 @@ class DetailPelatihanActivity : AppCompatActivity() {
     private var idPelatihTerpilih = 0
     private var idPelatihan = 0
     private var pelatihan = ""
+    private var deskripsi = ""
+    private var hariKhusus = ""
     private var jenisPelatihan = ""
 
     private var loading = LoadingAlertDialog()
@@ -57,6 +59,8 @@ class DetailPelatihanActivity : AppCompatActivity() {
             dataPelatihan = extras.getParcelable("pelatihan")!!
             idPelatihan = dataPelatihan?.id_pelatihan!!
             pelatihan = dataPelatihan?.pelatihan!!
+            deskripsi = dataPelatihan?.deskripsi!!
+            hariKhusus = dataPelatihan?.hari_khusus!!
             jenisPelatihan = dataPelatihan?.jenis_pelatihan?.jenis_pelatihan!!
 
             fetchPelatih(dataPelatihan?.id_pelatihan!!)
@@ -121,8 +125,8 @@ class DetailPelatihanActivity : AppCompatActivity() {
             }
             btnDaftar.setOnClickListener {
                 postDaftarPelatihan(
-                    sharedPreferences.getIdUser(), idPelatihTerpilih,
-                    idPelatihan, pelatihan, jenisPelatihan
+                    sharedPreferences.getIdUser(), idPelatihTerpilih, idPelatihan,
+                    pelatihan, deskripsi, hariKhusus, jenisPelatihan
                 )
             }
         }
@@ -146,11 +150,11 @@ class DetailPelatihanActivity : AppCompatActivity() {
     }
 
     private fun postDaftarPelatihan(
-        idUser: Int, idPelatih: Int, idPelatihan: Int,
-        pelatihan:String, jenisPelatihan: String
+        idUser: Int, idPelatih: Int, idPelatihan: Int, pelatihan:String,
+        deskripsi:String, hariKhusus:String, jenisPelatihan: String
     ){
         viewModel.postDaftarPelatihan(
-            idUser, idPelatih, idPelatihan, pelatihan, jenisPelatihan
+            idUser, idPelatih, idPelatihan, pelatihan, deskripsi, hariKhusus, jenisPelatihan
         )
     }
 
