@@ -47,13 +47,13 @@ class HomeFragment : Fragment() {
     private fun setButton() {
         binding.apply {
             btnPelatihan.setOnClickListener {
-                MainActivity().clickPelatihan()
+                (activity as MainActivity).clickPelatihan()
             }
             btnAgenda.setOnClickListener {
-                MainActivity().clickAgenda()
+                (activity as MainActivity).clickAgenda()
             }
             btnAkun.setOnClickListener {
-                MainActivity().clickAccount()
+                (activity as MainActivity).clickAccount()
             }
         }
     }
