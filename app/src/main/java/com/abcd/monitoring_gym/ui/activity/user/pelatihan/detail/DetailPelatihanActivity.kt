@@ -34,9 +34,10 @@ class DetailPelatihanActivity : AppCompatActivity() {
     private var idPelatihTerpilih = 0
     private var idPelatihan = 0
     private var pelatihan = ""
+    private var jenisPelatihan = ""
     private var deskripsi = ""
     private var hariKhusus = ""
-    private var jenisPelatihan = ""
+    private var harga = ""
 
     private var loading = LoadingAlertDialog()
 
@@ -59,9 +60,10 @@ class DetailPelatihanActivity : AppCompatActivity() {
             dataPelatihan = extras.getParcelable("pelatihan")!!
             idPelatihan = dataPelatihan?.id_pelatihan!!
             pelatihan = dataPelatihan?.pelatihan!!
+            jenisPelatihan = dataPelatihan?.jenis_pelatihan?.jenis_pelatihan!!
             deskripsi = dataPelatihan?.deskripsi!!
             hariKhusus = dataPelatihan?.hari_khusus!!
-            jenisPelatihan = dataPelatihan?.jenis_pelatihan?.jenis_pelatihan!!
+            harga = dataPelatihan?.harga!!
 
             fetchPelatih(dataPelatihan?.id_pelatihan!!)
             setData(dataPelatihan!!)
@@ -126,7 +128,7 @@ class DetailPelatihanActivity : AppCompatActivity() {
             btnDaftar.setOnClickListener {
                 postDaftarPelatihan(
                     sharedPreferences.getIdUser(), idPelatihTerpilih, idPelatihan,
-                    pelatihan, deskripsi, hariKhusus, jenisPelatihan
+                    pelatihan, jenisPelatihan, deskripsi, hariKhusus, harga
                 )
             }
         }
@@ -150,11 +152,11 @@ class DetailPelatihanActivity : AppCompatActivity() {
     }
 
     private fun postDaftarPelatihan(
-        idUser: Int, idPelatih: Int, idPelatihan: Int, pelatihan:String,
-        deskripsi:String, hariKhusus:String, jenisPelatihan: String
+        idUser: Int, idPelatih: Int, idPelatihan: Int, pelatihan:String, jenisPelatihan: String,
+        deskripsi:String, hariKhusus:String, harga: String
     ){
         viewModel.postDaftarPelatihan(
-            idUser, idPelatih, idPelatihan, pelatihan, deskripsi, hariKhusus, jenisPelatihan
+            idUser, idPelatih, idPelatihan, pelatihan, jenisPelatihan, deskripsi, hariKhusus, harga
         )
     }
 

@@ -82,9 +82,10 @@ interface ApiService {
         @Field("id_pelatih") id_pelatih:Int,
         @Field("id_pelatihan") id_pelatihan:Int,
         @Field("pelatihan") pelatihan:String,
-        @Field("deskripsi") deskripsi:String,
-        @Field("hari_kkhusus") hari_kkhusus:String,
         @Field("jenis_pelatihan") jenis_pelatihan:String,
+        @Field("deskripsi") deskripsi:String,
+        @Field("hari_khusus") hari_khusus:String,
+        @Field("harga") harga:String,
     ): ResponseModel
 
     //

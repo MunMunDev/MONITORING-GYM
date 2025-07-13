@@ -34,12 +34,13 @@ class PelatihanRepository @Inject constructor(
         idPelatih: Int,
         idPelatihan: Int,
         pelatihan: String,
+        jenisPelatihan: String,
         deskripsi: String,
         hariKhusus: String,
-        jenisPelatihan: String,
+        harga: String,
     ):ResponseModel{
         return api.postDaftarPelatihan(
-            "", idUser, idPelatih, idPelatihan, pelatihan, deskripsi, hariKhusus, jenisPelatihan
+            "", idUser, idPelatih, idPelatihan, pelatihan, jenisPelatihan, deskripsi, hariKhusus, harga
         )
     }
 
