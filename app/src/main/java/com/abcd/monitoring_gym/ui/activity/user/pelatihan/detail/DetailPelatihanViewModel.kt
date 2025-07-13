@@ -45,16 +45,17 @@ class DetailPelatihanViewModel @Inject constructor(
         idPelatih: Int,
         idDaftarPelatihan: Int,
         pelatihan: String,
+        jenisPelatihan: String,
         deskripsi: String,
         hariKhusus: String,
-        jenisPelatihan: String,
+        harga: String,
     ){
         viewModelScope.launch(Dispatchers.IO) {
             _responseDaftarPelatihan.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val pelatihanTerdaftar = repositoryPelatihan.postDaftarPelatihan(
-                    idUser, idPelatih, idDaftarPelatihan, pelatihan, deskripsi, hariKhusus, jenisPelatihan
+                    idUser, idPelatih, idDaftarPelatihan, pelatihan, jenisPelatihan, deskripsi, hariKhusus, harga
                 )
                 _responseDaftarPelatihan.postValue(UIState.Success(pelatihanTerdaftar))
             } catch (ex: Exception){
