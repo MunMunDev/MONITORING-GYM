@@ -85,12 +85,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
-                android:text="Rp. 1.000.000"
+                android:text=""
                 android:textSize="12sp"
                 android:textColor="@color/abuabu_tua"
                 android:textStyle="bold"
                 android:maxLines="1"
-                android:ellipsize="end"/>
+                android:ellipsize="end"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tvHariKhusus"
